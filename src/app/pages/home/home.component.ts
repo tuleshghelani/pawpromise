@@ -44,6 +44,38 @@ export class HomeComponent implements OnInit {
     }
   ];
 
+  // Add this below your existing properties
+  categories = [
+    { label: 'Dogs',        image: 'assets/home/dog.jpeg',    link: '/dogs',        color: '#FF9800' },
+    { label: 'Cats',        image: 'assets/home/dog.jpeg',    link: '/cats',        color: '#E91E63' },
+    { label: 'Small Pets',  image: 'assets/home/dog.jpeg',    link: '/small-pets',  color: '#00BCD4' },
+    { label: 'Birds',       image: 'assets/home/dog.jpeg',    link: '/birds',       color: '#8BC34A' },
+    { label: 'Vet Consultation', image: 'assets/home/dog.jpeg', link: '/vet',       color: '#7C4DFF' },
+    { label: 'Blog',        image: 'assets/home/dog.jpeg',    link: '/blog',        color: '#009688' },
+    // { label: 'Experience Centers', image: 'assets/home/dog.jpeg', link: '/experience-centers', color: '#FF7043' }
+  ];
+
+  featuredProducts = [
+    { name: 'Premium Dog Food', image: 'assets/home/dog.jpeg', price: '₹799', link: '/products/1' },
+    { name: 'Cat Scratching Post', image: 'assets/home/dog.jpeg', price: '₹499', link: '/products/2' },
+    { name: 'Bird Cage', image: 'assets/home/dog.jpeg', price: '₹1,299', link: '/products/3' },
+  ];
+
+  specialOffers = [
+    { title: 'Summer Sale: Up to 30% Off!', description: 'On select pet foods and accessories.', link: '/offers' },
+    { title: 'Buy 1 Get 1 Free', description: 'On all dog toys. Limited time only!', link: '/offers' },
+  ];
+
+  testimonials = [
+    { name: 'Amit S.', review: 'Great quality and fast delivery! My dog loves the food.', image: 'assets/home/dog.jpeg' },
+    { name: 'Priya K.', review: 'Excellent customer service and unique products.', image: 'assets/home/dog.jpeg' },
+  ];
+
+  blogPosts = [
+    { title: '5 Tips for New Pet Owners', image: 'assets/home/dog.jpeg', link: '/blog/5-tips' },
+    { title: 'How to Choose the Right Food', image: 'assets/home/dog.jpeg', link: '/blog/choose-food' },
+  ];
+
   constructor(
     private sanitizer: DomSanitizer,
     private meta: Meta,
@@ -111,5 +143,19 @@ export class HomeComponent implements OnInit {
 
   ngOnDestroy() {
     this.stopSlider();
+  }
+
+  setCurrentSlide(index: number) {
+    this.currentSlide = index;
+  }
+
+  getSlideLabel(index: number): string {
+    return `Go to slide ${index + 1}`;
+  }
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => Aos.refresh(), 100);
+    }
   }
 }

@@ -1,45 +1,75 @@
-<div class="home-container">
-  <!-- Hero Slider -->
-  <section class="slider-section elevation-2 premium-gradient" aria-label="Featured Slider">
-    <div class="slider-wrapper">
-      <button class="slider-arrow prev" (click)="prevSlide()" aria-label="Previous Slide">&#10094;</button>
-      <div class="slider-image-wrapper">
-        <img
-          [src]="sliderImages[currentSlide]"
-          [alt]="'Slider image ' + (currentSlide + 1)"
-          class="slider-image"
-          loading="eager"
-        />
+<section class="hero-slider">
+    <div class="slider-container">
+      <div class="slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+        <div class="slide" *ngFor="let slide of sliderImages; let i = index" [attr.data-aos]="'fade-up'">
+          <div class="slide-image">
+            <img [src]="slide" [alt]="slide" loading="lazy">
+          </div>
+          <div class="slide-content">
+            <!-- <h1>{{slide.title}}</h1>
+            <h2>{{slide.subtitle}}</h2>
+            <p>{{slide.description}}</p>
+            <div class="cta-buttons">
+              <a routerLink="/products" class="btn btn-primary">Explore Products</a>
+              <a routerLink="/contact" class="btn btn-secondary">Contact Us</a>
+            </div> -->
+          </div>
+        </div>
       </div>
-      <button class="slider-arrow next" (click)="nextSlide()" aria-label="Next Slide">&#10095;</button>
-    </div>
-    <div class="slider-dots">
-      <button
-        *ngFor="let img of sliderImages; let i = index"
-        [class.active]="i === currentSlide"
-        (click)="goToSlide(i)"
-        aria-label="Go to slide"
-      ></button>
+      <button class="slider-nav prev" (click)="prevSlide()" [attr.aria-label]="'Previous slide'">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-nav next" (click)="nextSlide()" [attr.aria-label]="'Next slide'">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="slider-dots">
+        <button *ngFor="let slide of sliderImages; let i = index" 
+                [class.active]="i === currentSlide"
+                (click)="setCurrentSlide(i)"
+                [attr.aria-label]="getSlideLabel(i)">
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- Sections -->
-  <section class="sections-container">
-    <div class="section-card elevation-1 hover-lift" *ngFor="let section of sections" [ngClass]="section.color" aos data-aos="fade-up">
-      <div class="section-icon" [ngClass]="section.color">
-        <span class="material-icons">{{section.icon}}</span>
+<section class="category-section" aria-label="Pet Categories">
+  <div class="category-container">
+    <a *ngFor="let cat of categories"
+       class="category-card"
+       [routerLink]="cat.link"
+       [ngStyle]="{'background': cat.color}"
+       [attr.aria-label]="cat.label">
+      <div class="category-img-wrapper">
+        <img [src]="cat.image" [alt]="cat.label + ' image'" loading="lazy" />
       </div>
-      <h2 class="section-title">{{section.title}}</h2>
-      <p class="section-description">{{section.description}}</p>
-    </div>
-  </section>
+      <div class="category-label">{{ cat.label }}</div>
+    </a>
+  </div>
+</section>
 
-  <!-- Call to Action -->
-  <section class="cta-section elevation-2 premium-gradient" aos data-aos="fade-in">
-    <div class="cta-content">
-      <h2>Ready to Elevate Your Business?</h2>
-      <p>Contact us today and discover how PawPromise can help you achieve your goals with premium, scalable, and robust solutions.</p>
-      <a routerLink="/contact" class="cta-btn">Get in Touch</a>
+<!-- Products Preview Section -->
+<section class="products-preview" data-aos="">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Premium Products</h2>
+      <p>Tailored nutrition for every pet's needs</p>
     </div>
-  </section>
-</div>
+    <div class="products-grid">
+      <div class="product-category" data-aos="" data-aos-delay="100">
+        <img src="assets/home/slider-1.jpg" alt="Dog Food" loading="lazy">
+        <h3>Dog Nutrition</h3>
+        <a routerLink="/prelaunch" class="btn btn-outline">Claim 25% Prelaunch Discount</a>
+      </div>
+      <div class="product-category" data-aos="" data-aos-delay="200">
+        <img src="assets/home/slider-1.jpg" alt="Cat Food" loading="lazy">
+        <h3>Cat Nutrition</h3>
+        <a routerLink="/prelaunch" class="btn btn-outline">Claim 25% Prelaunch Discount</a>
+      </div>
+      <div class="product-category" data-aos="" data-aos-delay="300">
+        <img src="assets/home/slider-1.jpg" alt="Pet Treats" loading="lazy">
+        <h3>Healthy Treats</h3>
+        <a routerLink="/prelaunch" class="btn btn-outline">Claim 25% Prelaunch Discount</a>
+      </div>
+    </div>
+  </div>
+</section>
