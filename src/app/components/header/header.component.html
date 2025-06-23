@@ -1,0 +1,100 @@
+<!-- Premium E-commerce Header -->
+<header class="ecom-header" [class.sticky]="isSticky" role="banner">
+  <div class="header-container">
+    <!-- Logo & Tagline -->
+    <div class="header-brand">
+      <a routerLink="/" class="brand-link" aria-label="Pawpromise Home">
+        <img src="assets/logo/logo.png" alt="Pawpromise Logo" class="brand-logo" />
+        <span class="brand-tagline">Premium Pet Nutrition & Care</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="header-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li><a routerLink="/shop" routerLinkActive="active">Shop</a></li>
+        <li><a routerLink="/about-us" routerLinkActive="active">About Us</a></li>
+        <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+        <li class="prelaunch-item">
+          <a routerLink="/prelaunch" routerLinkActive="active" class="prelaunch-link">
+            <span class="prelaunch-text">PreLaunch (25% Dis.)</span>
+            <span class="prelaunch-badge"></span>
+          </a>
+        </li>
+        <li><a routerLink="/contact-us" routerLinkActive="active">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Search -->
+      <form class="search-form" role="search" aria-label="Site Search" (submit)="$event.preventDefault()">
+        <input type="search" placeholder="Search products..." aria-label="Search products" />
+        <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+      </form>
+      <!-- Wishlist -->
+      <a routerLink="/wishlist" class="action-link" aria-label="Wishlist">
+        <i class="fas fa-heart"></i>
+      </a>
+      <!-- Cart -->
+      <a routerLink="/cart" class="action-link cart-link" aria-label="Cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </a>
+      <!-- User Account -->
+      <a routerLink="/account" class="action-link" aria-label="Account">
+        <i class="fas fa-user"></i>
+      </a>
+      <!-- Mobile Menu Toggle -->
+      <button class="menu-toggle" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen" aria-label="Open Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" [class.active]="isMobileMenuOpen" role="navigation" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <a routerLink="/" class="brand-link" (click)="closeMobileMenu()">
+        <img src="assets/logo/logo.png" alt="Pawpromise Logo" class="brand-logo" />
+      </a>
+      <button class="close-btn" (click)="closeMobileMenu()" aria-label="Close Menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">Home</a></li>
+      <li><a routerLink="/shop" routerLinkActive="active" (click)="closeMobileMenu()">Shop</a></li>
+      <li><a routerLink="/about-us" routerLinkActive="active" (click)="closeMobileMenu()">About Us</a></li>
+      <li><a routerLink="/products" routerLinkActive="active" (click)="closeMobileMenu()">Products</a></li>
+      <li class="prelaunch-item">
+        <a routerLink="/prelaunch" routerLinkActive="active" class="prelaunch-link" (click)="closeMobileMenu()">
+          PreLaunch (25% Discount)
+        </a>
+      </li>
+      <li><a routerLink="/contact-us" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a></li>
+    </ul>
+    <div class="mobile-actions">
+      <a routerLink="/wishlist" class="action-link" aria-label="Wishlist" (click)="closeMobileMenu()">
+        <i class="fas fa-heart"></i>
+      </a>
+      <a routerLink="/cart" class="action-link cart-link" aria-label="Cart" (click)="closeMobileMenu()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </a>
+      <a routerLink="/account" class="action-link" aria-label="Account" (click)="closeMobileMenu()">
+        <i class="fas fa-user"></i>
+      </a>
+    </div>
+    <div class="mobile-contact">
+      <a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 1234567890</a>
+      <a href="mailto:info@pawpromise.co.uk"><i class="fas fa-envelope"></i> info&#64;pawpromise.co.uk</a>
+      <div class="mobile-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- Overlay -->
+  <div class="backdrop" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+</header>

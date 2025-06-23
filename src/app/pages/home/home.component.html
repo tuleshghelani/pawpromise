@@ -1,0 +1,115 @@
+<!-- Hero Slider Section -->
+<section class="hero-slider">
+  <div class="slider-container">
+    <div class="slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+      <div class="slide" *ngFor="let slide of slides; let i = index" [attr.data-aos]="'fade-up'">
+        <div class="slide-image">
+          <img [src]="slide.image" [alt]="slide.title" loading="lazy">
+        </div>
+        <div class="slide-content">
+          <!-- <h1>{{slide.title}}</h1>
+          <h2>{{slide.subtitle}}</h2>
+          <p>{{slide.description}}</p>
+          <div class="cta-buttons">
+            <a routerLink="/products" class="btn btn-primary">Explore Products</a>
+            <a routerLink="/contact" class="btn btn-secondary">Contact Us</a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <button class="slider-nav prev" (click)="prevSlide()" [attr.aria-label]="'Previous slide'">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="slider-nav next" (click)="nextSlide()" [attr.aria-label]="'Next slide'">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="slider-dots">
+      <button *ngFor="let slide of slides; let i = index" 
+              [class.active]="i === currentSlide"
+              (click)="setCurrentSlide(i)"
+              [attr.aria-label]="getSlideLabel(i)">
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" data-aos="fade-up">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Choose Pawpromise?</h2>
+      <p>Discover the difference in premium pet nutrition</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon">
+          <i class="fas fa-medal"></i>
+        </div>
+        <h3>Premium Quality</h3>
+        <p>Highest grade ingredients for optimal pet health</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon">
+          <i class="fas fa-flask"></i>
+        </div>
+        <h3>Science-Backed</h3>
+        <p>Formulated by expert nutritionists</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3>Pet-Approved</h3>
+        <p>Taste-tested and loved by pets</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="icon">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h3>Natural Ingredients</h3>
+        <p>Clean and sustainable sourcing</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Preview Section -->
+<section class="products-preview" data-aos="fade-up">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Premium Products</h2>
+      <p>Tailored nutrition for every pet's needs</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-category" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/home/slider-1.jpg" alt="Dog Food" loading="lazy">
+        <h3>Dog Nutrition</h3>
+        <a routerLink="/products/dogs" class="btn btn-outline">Claim 25% Prelaunch Discount</a>
+      </div>
+      <div class="product-category" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/home/slider-1.jpg" alt="Cat Food" loading="lazy">
+        <h3>Cat Nutrition</h3>
+        <a routerLink="/products/cats" class="btn btn-outline">Claim 25% Prelaunch Discount</a>
+      </div>
+      <div class="product-category" data-aos="fade-up" data-aos-delay="300">
+        <img src="assets/home/slider-1.jpg" alt="Pet Treats" loading="lazy">
+        <h3>Healthy Treats</h3>
+        <a routerLink="/products/treats" class="btn btn-outline">Claim 25% Prelaunch Discount</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section" data-aos="fade-up">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Give Your Pet the Best?</h2>
+      <p>Join thousands of happy pet parents who trust Pawpromise for their pet's nutrition</p>
+      <div class="cta-buttons">
+        <a routerLink="/products" class="btn btn-primary">Shop Now</a>
+        <a routerLink="/contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
