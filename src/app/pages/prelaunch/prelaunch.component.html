@@ -1,1 +1,81 @@
-<p>prelaunch works!</p>
+<div class="prelaunch-container">
+  <div class="form-wrapper">
+    <h1>Let's Meet Your Pet!</h1>
+    <p class="subtitle">Be part of the Paw Promise journey from Day One. Fill in this quick form to receive exclusive launch perks — your pet deserves the best.</p>
+
+    <form [formGroup]="prelaunchForm" (ngSubmit)="onSubmit()" class="prelaunch-form">
+      <div class="form-group">
+        <label for="fullName">Full Name<span class="required">*</span></label>
+        <input type="text" id="fullName" formControlName="fullName" placeholder="Enter your full name">
+        <div class="error-message" *ngIf="prelaunchForm.get('fullName')?.touched && prelaunchForm.get('fullName')?.invalid">
+          Full name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email<span class="required">*</span></label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+        <div class="error-message" *ngIf="prelaunchForm.get('email')?.touched && prelaunchForm.get('email')?.invalid">
+          Please enter a valid email address
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="petName">Pet's Name</label>
+        <input type="text" id="petName" formControlName="petName" placeholder="Enter your pet's name">
+        <div class="error-message" *ngIf="prelaunchForm.get('petName')?.touched && prelaunchForm.get('petName')?.invalid">
+          Pet's name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Type of Pet<span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option" *ngFor="let type of petTypes">
+            <input type="radio" [id]="'pet-' + type" formControlName="petType" [value]="type">
+            <label [for]="'pet-' + type">{{type}}</label>
+          </div>
+        </div>
+        <div class="error-message" *ngIf="prelaunchForm.get('petType')?.touched && prelaunchForm.get('petType')?.invalid">
+          Please select your pet type
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="petAge">Pet's Age<span class="required">*</span></label>
+        <select id="petAge" formControlName="petAge">
+          <option value="" disabled selected>Please Select</option>
+          <option *ngFor="let age of petAges" [value]="age">{{age}}</option>
+        </select>
+        <div class="error-message" *ngIf="prelaunchForm.get('petAge')?.touched && prelaunchForm.get('petAge')?.invalid">
+          Please select your pet's age
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="productInterest">What would you like to buy from us for your pet?<span class="required">*</span></label>
+        <select id="productInterest" formControlName="productInterest">
+          <option value="" disabled selected>Please Select</option>
+          <option *ngFor="let product of productTypes" [value]="product">{{product}}</option>
+        </select>
+        <div class="error-message" *ngIf="prelaunchForm.get('productInterest')?.touched && prelaunchForm.get('productInterest')?.invalid">
+          Please select a product category
+        </div>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <div class="checkbox-wrapper">
+          <input type="checkbox" id="agreeToUpdates" formControlName="agreeToUpdates">
+          <label for="agreeToUpdates">I agree to receive early access and updates from Paw Promise<span class="required">*</span></label>
+        </div>
+        <div class="error-message" *ngIf="prelaunchForm.get('agreeToUpdates')?.touched && prelaunchForm.get('agreeToUpdates')?.invalid">
+          Please agree to receive updates
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="!prelaunchForm.valid">
+        Submit & Get 25% Off
+      </button>
+    </form>
+  </div>
+</div>

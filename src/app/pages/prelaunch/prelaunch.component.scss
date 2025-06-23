@@ -1,0 +1,190 @@
+// Variables
+$primary-color: #006837;
+$secondary-color: #333;
+$error-color: #dc3545;
+$border-color: #ddd;
+$background-color: #f8f9fa;
+$white: #fff;
+
+// Mixins
+@mixin transition {
+  transition: all 0.3s ease;
+}
+
+@mixin box-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+// Container styles
+.prelaunch-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: $background-color;
+}
+
+.form-wrapper {
+  background: $white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  @include box-shadow;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+// Typography
+h1 {
+  color: $primary-color;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.subtitle {
+  color: $secondary-color;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+// Form styles
+.prelaunch-form {
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: $secondary-color;
+      font-weight: 500;
+    }
+
+    .required {
+      color: $error-color;
+      margin-left: 0.25rem;
+    }
+  }
+
+  // Input styles
+  input[type="text"],
+  input[type="email"],
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    font-size: 1rem;
+    @include transition;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  // Radio group styles
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      input[type="radio"] {
+        accent-color: $primary-color;
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+
+      label {
+        margin: 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Checkbox styles
+  .checkbox-group {
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      input[type="checkbox"] {
+        accent-color: $primary-color;
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.25rem;
+      }
+
+      label {
+        margin: 0;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Error message styles
+  .error-message {
+    color: $error-color;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  // Submit button styles
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    @include transition;
+
+    &:hover:not(:disabled) {
+      background-color: darken($primary-color, 5%);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .form-wrapper {
+    padding: 1rem;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}
