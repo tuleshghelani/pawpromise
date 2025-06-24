@@ -15,10 +15,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
   
-  sliderImages = [
-    'assets/home/slider-1.jpg',
-    'assets/home/slider-2.jpg'
-  ];
   currentSlide = 0;
   sliderInterval: any;
 
@@ -130,27 +126,19 @@ export class HomeComponent implements OnInit {
   }
 
   nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.sliderImages.length;
+    this.currentSlide = (this.currentSlide + 1) % 2; // 2 is the total number of slides
   }
 
   prevSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.sliderImages.length) % this.sliderImages.length;
-  }
-
-  goToSlide(index: number) {
-    this.currentSlide = index;
-  }
-
-  ngOnDestroy() {
-    this.stopSlider();
+    this.currentSlide = (this.currentSlide - 1 + 2) % 2; // 2 is the total number of slides
   }
 
   setCurrentSlide(index: number) {
     this.currentSlide = index;
   }
 
-  getSlideLabel(index: number): string {
-    return `Go to slide ${index + 1}`;
+  ngOnDestroy() {
+    this.stopSlider();
   }
 
   ngAfterViewInit() {

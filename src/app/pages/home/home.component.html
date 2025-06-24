@@ -1,36 +1,66 @@
 <section class="hero-slider">
-    <div class="slider-container">
-      <div class="slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
-        <div class="slide" *ngFor="let slide of sliderImages; let i = index" [attr.data-aos]="'fade-up'">
-          <div class="slide-image">
-            <img [src]="slide" [alt]="slide" loading="lazy">
-          </div>
-          <div class="slide-content">
-            <!-- <h1>{{slide.title}}</h1>
-            <h2>{{slide.subtitle}}</h2>
-            <p>{{slide.description}}</p>
-            <div class="cta-buttons">
-              <a routerLink="/products" class="btn btn-primary">Explore Products</a>
-              <a routerLink="/contact" class="btn btn-secondary">Contact Us</a>
-            </div> -->
+  <div class="slider-container">
+    <div class="slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+      <!-- Slide 1 - Launch Announcement -->
+      <div class="slide" data-aos="fade-up">
+        <div class="slide-image">
+          <img src="assets/home/slider-1.jpg" alt="Premium Pet Food" loading="lazy">
+        </div>
+        <div class="slide-content slide-1">
+          <div class="launch-text">LAUNCHING</div>
+          <div class="soon-text">SOON</div>
+          <h1>Premium Pet Nutrition</h1>
+          <h2>Tailored for Your Pet's Health</h2>
+          <p>Discover our range of vet-approved, high-quality pet food</p>
+          <div class="cta-buttons">
+            <a routerLink="/prelaunch" class="btn btn-primary">Get 25% Off</a>
+            <a routerLink="/about-us" class="btn btn-secondary">Learn More</a>
           </div>
         </div>
       </div>
-      <button class="slider-nav prev" (click)="prevSlide()" [attr.aria-label]="'Previous slide'">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="slider-nav next" (click)="nextSlide()" [attr.aria-label]="'Next slide'">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-      <div class="slider-dots">
-        <button *ngFor="let slide of sliderImages; let i = index" 
-                [class.active]="i === currentSlide"
-                (click)="setCurrentSlide(i)"
-                [attr.aria-label]="getSlideLabel(i)">
-        </button>
+
+      <!-- Slide 2 - Natural Ingredients -->
+      <div class="slide" data-aos="fade-up">
+        <div class="slide-image">
+          <img src="assets/home/slider-2.jpg" alt="Natural Ingredients" loading="lazy">
+        </div>
+        
+        <div class="slide-content slide-1">
+          <div class="launch-text">100% Natural</div>
+          <div class="soon-text">Friendly</div>
+          <h1>Natural Ingredients</h1>
+          <h2>For Healthier Pets</h2>
+          <p>Made with love, backed by science</p>
+          <div class="cta-buttons">
+            <a routerLink="/prelaunch" class="btn btn-primary">Pre-Order Now</a>
+            <a routerLink="/about-us" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
       </div>
+
     </div>
-  </section>
+
+    <!-- Navigation Buttons -->
+    <button class="slider-nav prev" (click)="prevSlide()" [attr.aria-label]="'Previous slide'">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="slider-nav next" (click)="nextSlide()" [attr.aria-label]="'Next slide'">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Dots Navigation -->
+    <div class="slider-dots">
+      <button [class.active]="currentSlide === 0" 
+              (click)="setCurrentSlide(0)"
+              aria-label="Go to slide 1">
+      </button>
+      <button [class.active]="currentSlide === 1" 
+              (click)="setCurrentSlide(1)"
+              aria-label="Go to slide 2">
+      </button>
+    </div>
+  </div>
+</section>
 
 <!-- Short Intro Section -->
 <section class="intro-section" aria-label="About Paw Promise" data-aos="">
