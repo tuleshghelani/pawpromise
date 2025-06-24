@@ -98,68 +98,125 @@
   }
 }
 
-// Styling for the "Our Promise" section
-.our-promise {
+// Styling for Mission and Vision section
+.mission-vision-section {
+  margin-bottom: 3rem;
   animation: fadeInUp 1s 0.4s ease-out backwards;
+
+  .mission-vision-grid {
+    display: grid;
+    gap: 2rem;
+
+    @include respond-to('desktop') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .card {
+    background-color: $background-secondary;
+    padding: 2.5rem;
+    border-radius: 8px;
+    border-top: 4px solid $accent;
+    box-shadow: 0 4px 15px rgba($shadow-color, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    // &:hover {
+    //   transform: translateY(-5px);
+    //   box-shadow: 0 8px 20px rgba($shadow-color, 0.12);
+    // }
+
+    h4 {
+      font-size: 1.75rem;
+      color: $primary;
+      margin-bottom: 1rem;
+      font-weight: $weight-bold;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: $text-secondary;
+    }
+
+    @include respond-to('mobile') {
+      padding: 2rem;
+      h4 { font-size: 1.5rem; }
+      p { font-size: 1rem; }
+    }
+  }
+}
+
+// Styling for the "Our Values" section (replaces .our-promise)
+.our-values {
+  animation: fadeInUp 1s 0.6s ease-out backwards;
 
   h3 {
     color: $primary;
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     text-align: center;
     font-weight: $weight-bold;
   }
 
-  .promise-list {
+  .values-grid {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
     gap: 1.5rem;
     
-    @include respond-to('desktop') {
+    @include respond-to('tablet') {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    li {
-      display: flex;
-      align-items: center;
-      font-size: 1.125rem;
-      color: $text-secondary;
-      padding: 1.5rem;
+    @include respond-to('desktop') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .value-item {
+      text-align: center;
+      padding: 2rem;
       background-color: rgba($primary-lightest, 0.2);
       border-radius: 8px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       
       &:hover {
-        transform: translateY(-3px);
+        transform: translateY(-5px);
         box-shadow: 0 6px 15px rgba($shadow-color, 0.1);
       }
       
       .emoji {
-        margin-right: 1rem;
-        font-size: 1.5rem;
+        display: block;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      h5 {
+        font-size: 1.25rem;
+        color: $primary;
+        margin-bottom: 0.5rem;
+        font-weight: $weight-bold;
+      }
+
+      p {
+        font-size: 1rem;
+        color: $text-secondary;
+        line-height: 1.6;
       }
     }
   }
+}
+
+.closing-section {
+  animation: fadeInUp 1s 0.8s ease-out backwards;
   
   .closing-statement {
     text-align: center;
     font-style: italic;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     color: $primary;
     font-size: 1.25rem;
     font-weight: $weight-medium;
-  }
-
-  @include respond-to('mobile') {
-    li {
-      padding: 1rem;
-      font-size: 1rem;
-    }
-    .closing-statement {
-      font-size: 1.1rem;
-    }
   }
 }
 
@@ -180,7 +237,7 @@
     background-color: #fff;
     color: #000;
   }
-  .about-us-container, .story-card, .our-promise {
+  .about-us-container, .story-card, .our-values, .mission-vision-section {
     box-shadow: none;
     background: none;
   }
@@ -188,4 +245,5 @@
     border: 1px solid #000;
   }
 }
+
 

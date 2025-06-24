@@ -18,25 +18,25 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit(): void {
     // Set SEO meta tags
-    this.title.setTitle('About Us - Paw Promise | Premium Pet Nutrition & Care');
+    this.title.setTitle('Our Mission & Vision - About Paw Promise');
     this.meta.updateTag({ 
       name: 'description', 
-      content: 'Learn about Paw Promise\'s commitment to premium pet nutrition and care. We create honest, nutritious pet food with love at its core.'
+      content: 'Discover the heart of Paw Promise. Learn about our mission, vision, and core values dedicated to providing premium pet nutrition, and see why we\'re building a community of pet lovers committed to health and happiness.'
     });
     this.meta.updateTag({ 
       name: 'keywords', 
-      content: 'pet food, premium pet nutrition, pet care, natural pet food, honest pet food, pet health'
+      content: 'pet food, premium pet nutrition, pet care, natural pet food, honest pet food, pet health, pet wellness, company mission, company vision, pet food values'
     });
     
     // Open Graph tags for social sharing
-    this.meta.updateTag({ property: 'og:title', content: 'About Paw Promise - Premium Pet Nutrition & Care' });
-    this.meta.updateTag({ property: 'og:description', content: 'Discover how Paw Promise is revolutionizing pet nutrition with honest, premium quality pet food made with love.' });
+    this.meta.updateTag({ property: 'og:title', content: 'Our Mission & Vision - About Paw Promise' });
+    this.meta.updateTag({ property: 'og:description', content: 'Discover the heart of Paw Promise. Learn about our mission, vision, and core values dedicated to providing premium pet nutrition.' });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:url', content: 'https://pawpromise.com/about-us' });
     
     // Twitter Card tags
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'About Paw Promise - Premium Pet Nutrition & Care' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Discover how Paw Promise is revolutionizing pet nutrition with honest, premium quality pet food made with love.' });
+    this.meta.updateTag({ name: 'twitter:title', content: 'Our Mission & Vision - About Paw Promise' });
+    this.meta.updateTag({ name: 'twitter:description', content: 'Discover the heart of Paw Promise. Learn about our mission, vision, and core values dedicated to providing premium pet nutrition.' });
   }
 }
