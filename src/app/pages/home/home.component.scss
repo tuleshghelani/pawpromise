@@ -420,11 +420,13 @@
 .cta-section {
   position: relative;
   background: linear-gradient(135deg, $secondary-lighter 0%, $primary-lighter 100%);
-  padding: 5rem 0 5rem 0;
+  padding: 5rem 0;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 
   .cta-bg-ornament {
     position: absolute;
@@ -437,11 +439,14 @@
 
   .cta-container {
     width: 100%;
+    max-width: 1800px; // for ultra-wide screens
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     position: relative;
     z-index: 1;
+    padding: 0 2vw;
   }
 
   .cta-card {
@@ -449,14 +454,23 @@
     border-radius: 2.5rem;
     box-shadow: 0 8px 40px 0 rgba($primary, 0.13), 0 1.5px 8px rgba($secondary, 0.10);
     padding: 3rem 3.5rem 2.5rem 3.5rem;
-    max-width: 520px;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     text-align: center;
     position: relative;
     border: 2.5px solid $primary-light;
     transition: box-shadow 0.2s;
     animation: cta-pop-in 0.7s cubic-bezier(.23,1.01,.32,1) 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+    @media (max-width: 1200px) {
+      max-width: 98vw;
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+    }
     @include mobile {
       padding: 1.5rem 0.7rem 1.2rem 0.7rem;
       border-radius: 1.2rem;
@@ -522,10 +536,13 @@
     padding: 0;
     margin: 0 0 1.3rem 0;
     display: flex;
-    flex-direction: column;
+    // 
     gap: 0.7rem;
     align-items: flex-start;
-    @include mobile { align-items: center; }
+    @include mobile { 
+      align-items: center; 
+      flex-direction: column;
+    }
     li {
       color: $primary;
       font-size: 1.08rem;
@@ -604,4 +621,101 @@
 @keyframes cta-btn-glow {
   0% { box-shadow: 0 4px 18px rgba($primary, 0.13); }
   100% { box-shadow: 0 8px 32px 0 rgba($secondary, 0.18), 0 1.5px 8px rgba($primary, 0.13); }
+}
+
+// Short Intro Section
+.intro-section {
+  width: 100%;
+  background: linear-gradient(90deg, $primary-lighter 0%, $secondary-lighter 100%);
+  padding: 2.8rem 0 2.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  .intro-bg-ornament {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(circle at 80% 20%, rgba($primary, 0.07) 0, transparent 60%),
+                radial-gradient(circle at 10% 90%, rgba($secondary, 0.09) 0, transparent 70%);
+    pointer-events: none;
+  }
+
+  .intro-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro-card {
+    background: $text-white;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba($primary, 0.08);
+    padding: 2.2rem 2.5rem 2rem 2.5rem;
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+    border: 1.5px solid $primary-light;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include mobile {
+      padding: 1.2rem 0.7rem 1rem 0.7rem;
+      border-radius: 1rem;
+    }
+  }
+
+  .intro-icon {
+    margin-bottom: 0.7rem;
+    svg {
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 2px 8px rgba($primary, 0.10));
+    }
+  }
+
+  .intro-title {
+    color: $primary;
+    font-size: 1.6rem;
+    font-weight: $weight-bold;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.01em;
+    @include mobile { font-size: 1.15rem; }
+  }
+
+  .intro-text {
+    color: $secondary;
+    font-size: 1.13rem;
+    font-weight: $weight-medium;
+    line-height: 1.6;
+    .brand {
+      color: $primary;
+      font-weight: $weight-bold;
+      font-size: 1.08em;
+    }
+    .intro-highlight {
+      color: $secondary;
+      font-weight: $weight-semibold;
+      background: rgba($secondary-light, 0.13);
+      border-radius: 0.5rem;
+      padding: 0.1rem 0.5rem;
+      display: inline-block;
+      margin: 0.2rem 0;
+    }
+    .intro-invite {
+      display: block;
+      margin-top: 0.7rem;
+      color: $primary-light;
+      font-weight: $weight-bold;
+      font-size: 1.08em;
+      letter-spacing: 0.01em;
+    }
+    @include mobile { font-size: 1rem; }
+  }
 }
