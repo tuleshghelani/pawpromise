@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: 'prelaunch',
     loadComponent: () => import('./pages/prelaunch/prelaunch.component').then(m => m.PrelaunchComponent)
   },
+  {
+    path: '*',
+    redirectTo: '',
+  }
   // ... other routes
 ];
