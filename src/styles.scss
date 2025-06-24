@@ -4,6 +4,20 @@
 @import 'styles/effects';
 @import 'styles/typography';
 @import './styles/fix-layout.scss';
+
+// Set consistent box-sizing for all elements
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 // @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 $font-family-base: 'Roboto', sans-serif;
 // Primary Colors - Teal theme representing professionalism, creativity, and trust
@@ -28,6 +42,7 @@ $neutral-lightest: #f5f7f7;
 
 // Additional Professional Colors
 $accent: #2c4e50; // Deep teal-gray for text and accents
+$accent-color: #f39c12;
 $success: #27ae60; // Success states
 $warning: #f39c12; // Warning states
 $error: #e74c3c; // Error states
